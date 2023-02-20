@@ -1,24 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
+import News from './Components/News';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import LoadingBar from 'react-top-loading-bar';
+import { useState } from 'react';
 
 function App() {
+
+  const [progress, setProgress] = useState(0)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <LoadingBar
+        color='#f11946'
+        progress={progress}
+        onLoaderFinished={() => setProgress(100)}
+      />
+      <Navbar />
+      <Routes>
+        <Route exact path='/' element={<News country="in" pageSize={5} key="general" setProgress={setProgress} category="general" />}></Route>
+        <Route exact path='/business' element={<News country="in" pageSize={5} key="business" setProgress={setProgress} category="business" />}></Route>
+        <Route exact path='/entertainment' element={<News country="in" pageSize={5} key="entertainment" setProgress={setProgress} category="entertainment" />}></Route>
+        <Route exact path='/general' element={<News country="in" pageSize={5} key="general" setProgress={setProgress} category="general" />}></Route>
+        <Route exact path='/health' element={<News country="in" pageSize={5} key="health" setProgress={setProgress} category="health" />}></Route>
+        <Route exact path='/science' element={<News country="in" pageSize={5} key="science" setProgress={setProgress} category="science" />}></Route>
+        <Route exact path='/sports' element={<News country="in" pageSize={5} key="sports" setProgress={setProgress} category="sports" />}></Route>
+        <Route exact path='/technology' element={<News country="in" pageSize={5} key="technology" setProgress={setProgress} category="technology" />}></Route>
+      </Routes>
+    </Router>
+
   );
 }
 
