@@ -11,7 +11,7 @@ export default class NewsItem extends Component {
                         <h5 className="title">{title}</h5>
                         <p className="text">{description}</p>
                         <p className="text"><small className="text-muted">By {author ? author : "Unknown"} on {new Date(date).toGMTString()}</small></p>
-                        <a href={newsUrl} target="_blank" className='btn btn-primary'>Read More</a>
+                        <a href={newsUrl} target="_blank" rel='noreferrer' className='btn btn-primary'>Read More</a>
                     </div>
                 </div>
             </div>
